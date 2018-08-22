@@ -1,0 +1,17 @@
+function onChange(control, oldValue, newValue, isLoading) {
+	if (isLoading || newValue == '') {
+		return;
+	}
+	//validates a valid email address for the onchange field
+	var err_field = control.id;
+	var err_message = 'Invalid Email Address (abc@domain.com)',
+	regex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/ig;
+	var err_flag = 'false';
+	err_flag = regex.test(g_form.getValue(err_field));
+	g_form.hideErrorBox(err_field);
+	if (!err_flag) {
+		g_form.showFieldMsg(err_field, err_message, 'error');
+	
+	}
+	else { g_form.hideErrorBox(err_field);}
+}
